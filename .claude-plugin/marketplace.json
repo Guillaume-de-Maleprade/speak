@@ -1,0 +1,8 @@
+{
+  "name": "speak",
+  "owner": { "name": "Guillaume de Maleprade" },
+  "description": "MCP server that lets the agent speak out loud, offline (Windows, CPU).",
+  "plugins": [
+    { "name": "speak", "source": "./", "description": "MCP server that lets the agent speak out loud, offline (Windows, CPU)." }
+  ]
+}

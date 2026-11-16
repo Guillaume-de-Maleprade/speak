@@ -1,0 +1,18 @@
+#!/bin/sh
+# Enable once per clone: git config core.hooksPath .githooks
+# Blocks commits that leak a local user path, or that break the plugin manifest.
+
+leaks=$(git diff --cached --name-only --diff-filter=ACM -z -- . ':!.githooks' \
+  | xargs -0 -r git grep --cached -nIiE '[A-Z]:[\\/]+Users[\\/]|/(Users|home)/[^/ ]+/|gdema' --)
+if [ -n "$leaks" ]; then
+  echo "pre-commit: staged files contain a local user path:" >&2
+  echo "$leaks" >&2
+  echo "Replace it with a placeholder like <repo> or %USERPROFILE%." >&2
+  exit 1
+fi
+
+if command -v claude >/dev/null 2>&1; then
+  claude plugin validate . >/dev/null || { claude plugin validate . >&2; exit 1; }
+else
+  echo "pre-commit: claude CLI not found, skipped plugin validate" >&2
+fi
