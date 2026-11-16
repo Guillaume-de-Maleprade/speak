@@ -27,8 +27,6 @@ Then run `/speak:setup`. It installs `mcp` and `pocket-tts` into the `python` on
 python -m pip install "mcp>=2.3,<3" "pocket-tts>=4.0,<5"
 ```
 
-Turn it on or off with `/plugin`: the MCP server starts and stops with it.
-
 To test the local copy without installing it, from the repo root:
 
 ```bat
@@ -43,6 +41,22 @@ Options, as environment variables:
 | `SPEAK_PRELOAD` | `SPEAK_LANG` | Comma-separated languages to load at startup; empty to load nothing |
 | `SPEAK_PREFIX` | git repo name | Said before every message, so you know which session talks; empty to say nothing |
 | `SPEAK_DELAY_S` | `2` | Seconds between a call and the start of its playback, so the reply written after the call is on screen when the voice starts; `0` to play at once |
+
+## Turn it off
+
+The voice can get in the way: in a meeting, on a call, or when you just want quiet. Disable the plugin from a terminal:
+
+```bat
+claude plugin disable speak@speak
+```
+
+Turn it back on:
+
+```bat
+claude plugin enable speak@speak
+```
+
+Installed from the g2m marketplace? Use `speak@g2m` instead. You can also toggle it inside Claude Code with `/plugin`. Either way, the MCP server starts and stops with the plugin; restart the session for the change to apply.
 
 ## Measured on a Windows laptop CPU (2026-11-12)
 
