@@ -19,8 +19,6 @@ Install the plugin in Claude Code:
 /plugin install speak@speak
 ```
 
-It's also listed in the [g2m marketplace](https://github.com/Guillaume-de-Maleprade/skills) as `speak@g2m`.
-
 Then run `/speak:setup`. It installs `mcp` and `pocket-tts` into the `python` on PATH (the one the server starts with), downloads the voice model, and plays a test sentence. Expect 1-3 minutes: it downloads torch. To do it by hand instead:
 
 ```bat
@@ -56,7 +54,7 @@ Turn it back on:
 claude plugin enable speak@speak
 ```
 
-Installed from the g2m marketplace? Use `speak@g2m` instead. You can also toggle it inside Claude Code with `/plugin`. Either way, the MCP server starts and stops with the plugin; restart the session for the change to apply.
+You can also toggle it inside Claude Code with `/plugin`. Either way, the MCP server starts and stops with the plugin; restart the session for the change to apply.
 
 ## Measured on a Windows laptop CPU (2026-11-12)
 
